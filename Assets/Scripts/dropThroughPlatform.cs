@@ -8,6 +8,9 @@ public class dropThroughPlatform : MonoBehaviour
     private Collider2D colliderObject;
     private bool platform;
 
+    private string player = "";
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +20,12 @@ public class dropThroughPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(platform && Input.GetKeyDown(KeyCode.S))
+        if(platform && Input.GetKeyUp(KeyCode.S) && player.Equals("Player1"))
+        {
+            colliderObject.enabled = false;
+            StartCoroutine(EnableCollider());
+        }
+        else if(platform && Input.GetKeyUp(KeyCode.DownArrow) && player.Equals("Player2"))
         {
             colliderObject.enabled = false;
             StartCoroutine(EnableCollider());
@@ -41,6 +49,7 @@ public class dropThroughPlatform : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        player = other.gameObject.tag;
         SetPlayerOnPlatform(other, true);
 
     }

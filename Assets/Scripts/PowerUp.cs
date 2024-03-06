@@ -7,8 +7,6 @@ public class PowerUp : MonoBehaviour
     public Player1 p1;
     public Player2 p2;
 
-    public int power = 0;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -21,49 +19,44 @@ public class PowerUp : MonoBehaviour
         
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "Player1")
         {
-            checkPower();
-            p1.setPower(power);
+            p1.setPower(checkPower());
         }
 
         if (coll.gameObject.tag == "Player2")
         {
-            checkPower();
-            p2.setPower(power);
+            p2.setPower(checkPower());
         }
     }
 
-    public void checkPower()
+    public int checkPower()
     {
         //0 = default, 1 = chicken, 2 = fly, 3 = wheel, 4 = fan, 5 = scissors
         switch (gameObject.name)
         {
             case "basic":
-                power = 0;
-                break;
+                return 0;
 
             case "chicken":
-                power = 1;
-                break;
+                return 1;
             
             case "fly":
-                power = 2;
-                break;
+                return 2;
 
             case "wheel":
-                power = 3;
-                break;
+                return 3;
 
             case "fan":
-                power = 4;
-                break;
+                return 4;
 
             case "scissors":
-                power = 5;
-                break;
+                return 5;
+
+            default:
+                return 0;
         }
     }
 }

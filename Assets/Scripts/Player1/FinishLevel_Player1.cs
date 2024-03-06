@@ -8,6 +8,8 @@ public class FinishLevel_Player1 : MonoBehaviour
     public LoadScenes loadLevel;
     public FinishLevel_Player2 player2;
 
+    public Tutorial1_Progression t1;
+    public Tutorial2_Progression t2;
     public Tutorial3_Progression t3;
 
     private bool playerReady = false;
@@ -89,6 +91,10 @@ public class FinishLevel_Player1 : MonoBehaviour
                 loadLevel.LoadTutorial3();
                 break;
 
+            case "Tutorial3":
+                loadLevel.LoadLevel1();
+                break;
+
             default:
                 break;
 
@@ -100,16 +106,19 @@ public class FinishLevel_Player1 : MonoBehaviour
         switch (loadLevel.getScene())
         {
             case "Main_Menu":
-                return false;
+                return true;
 
             case "Tutorial1":
-                return false;
+                return t1.getLevelStatus();
 
             case "Tutorial2":
-                return false;
+                return t2.getLevelStatus();
 
             case "Tutorial3":
                 return t3.getLevelStatus();
+
+            case "Level1":
+                return false;
 
             default:
                 return false;

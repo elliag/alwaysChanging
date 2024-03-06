@@ -9,6 +9,7 @@ TagManager:
   - PinkTeleport
   - BlueTeleport
   - Merge
+  - Death
   layers:
   - Default
   - TransparentFX

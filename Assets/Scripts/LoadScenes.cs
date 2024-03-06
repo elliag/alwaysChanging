@@ -40,4 +40,9 @@ public class LoadScenes : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName: "Tutorial3");
     }
+
+    public void LoadLevel1()
+    {
+        SceneManager.LoadScene(sceneName: "Level1");
+    }
 }

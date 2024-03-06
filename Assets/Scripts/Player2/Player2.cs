@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player2 : MonoBehaviour
 {
+    //1 for pink, 2 for blue
+    public int currentSpace = 2;
 
     //0 = default, 1 = chicken, 2 = fly, 3 = wheel, 4 = fan, 5 = scissors
     public int currentPower = 0;
@@ -48,5 +50,15 @@ public class Player2 : MonoBehaviour
                 break;
             
         }
+    }
+
+    public void setSpace(int x)
+    {
+        currentSpace = x;
+    }
+
+    public int getSpace()
+    {
+        return currentSpace;
     }
 }

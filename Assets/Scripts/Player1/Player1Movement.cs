@@ -9,8 +9,9 @@ public class Player1Movement : MonoBehaviour
 
     private float horizontal;
     private float speed = 8f;
-    private float jumpingPower = 30f;
+    private float jumpingPower = 16f;
     private bool isFacingRight = true;
+    private bool hasJumped = false;
 
     //vars for chicken ability
     public GameObject egg;
@@ -37,14 +38,11 @@ public class Player1Movement : MonoBehaviour
         // Only move left/right if A or D keys are pressed
         horizontal = Input.GetKey(KeyCode.A) ? -1f : Input.GetKey(KeyCode.D) ? 1f : 0f;
 
-        if (Input.GetKeyDown(KeyCode.W) && isGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-        }
-
-        if (Input.GetKeyDown(KeyCode.W) && rb.velocity.y > 0f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        if(hasJumped == false){
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            }
         }
 
         flip();
@@ -55,7 +53,7 @@ public class Player1Movement : MonoBehaviour
             Instantiate(egg, gameObject.transform.position, Quaternion.identity, uiCanvas.transform);
         }
 
-//check if power not equal 0 then drp
+        //check if power not equal 0 then drp
         if(Input.GetKey(KeyCode.S) && p1.getPower() != 0){
             startTimer = true;
     
@@ -84,11 +82,6 @@ public class Player1Movement : MonoBehaviour
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
 
-    private bool isGrounded()
-    {
-        return Physics2D.OverlapCircle(groundCheck.position, 02f, groundLayer);
-    }
-
     private void flip()
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
@@ -97,6 +90,23 @@ public class Player1Movement : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        //check if collided with ground layer
+        if (coll.gameObject.layer == 6)
+        {
+            hasJumped = false;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D coll)
+    {
+        if (coll.gameObject.layer == 6)
+        {
+            hasJumped = true;
         }
     }
 

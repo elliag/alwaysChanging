@@ -8,8 +8,9 @@ public class Player2Movement : MonoBehaviour
 
     private float horizontal;
     private float speed = 8f;
-    private float jumpingPower = 30f;
+    private float jumpingPower = 16f;
     private bool isFacingRight = true;
+    private bool hasJumped = false;
 
     //vars for chicken ability
     public GameObject egg;
@@ -18,6 +19,9 @@ public class Player2Movement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+
+    public bool startTimer = false;
+    public float timer = 3.0f;
 
 
     // Start is called before the first frame update
@@ -33,15 +37,14 @@ public class Player2Movement : MonoBehaviour
         // Only move left/right if Left or Right arrow keys are pressed
         horizontal = Input.GetKey(KeyCode.LeftArrow) ? -1f : Input.GetKey(KeyCode.RightArrow) ? 1f : 0f;
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        if(hasJumped == false){
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && rb.velocity.y > 0f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        }
+
 
         flip();
 
@@ -51,16 +54,33 @@ public class Player2Movement : MonoBehaviour
             Instantiate(egg, gameObject.transform.position, Quaternion.identity, uiCanvas.transform);
         }
 
+        //check if power not equal 0 then drp
+        if(Input.GetKey(KeyCode.DownArrow) && p2.getPower() != 0){
+            startTimer = true;
+    
+                if (startTimer)
+                {
+                    timer -= 3.0f * Time.deltaTime;
+    
+                    if (timer <= 0.0f)
+                    {
+                        p2.setPower(0);
+                        startTimer = false;
+                    
+                    }
+                }
+        }
+
+        if(Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            timer = 3.0f;
+        }
+
     }
 
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-    }
-
-    private bool isGrounded()
-    {
-        return Physics2D.OverlapCircle(groundCheck.position, 02f, groundLayer);
     }
 
     private void flip()
@@ -73,4 +93,22 @@ public class Player2Movement : MonoBehaviour
             transform.localScale = localScale;
         }
     }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        //check if collided with ground layer
+        if (coll.gameObject.layer == 6)
+        {
+            hasJumped = false;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D coll)
+    {
+        if (coll.gameObject.layer == 6)
+        {
+            hasJumped = true;
+        }
+    }
+
 }
