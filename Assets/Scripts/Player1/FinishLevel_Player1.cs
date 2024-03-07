@@ -11,6 +11,8 @@ public class FinishLevel_Player1 : MonoBehaviour
     public Tutorial1_Progression t1;
     public Tutorial2_Progression t2;
     public Tutorial3_Progression t3;
+    public Level1_Progression l1;
+    
 
     private bool playerReady = false;
 
@@ -95,6 +97,10 @@ public class FinishLevel_Player1 : MonoBehaviour
                 loadLevel.LoadLevel1();
                 break;
 
+            case "Level1":
+                //loadLevel.LoadLevel2();
+                break;
+
             default:
                 break;
 
@@ -118,7 +124,7 @@ public class FinishLevel_Player1 : MonoBehaviour
                 return t3.getLevelStatus();
 
             case "Level1":
-                return false;
+                return l1.getLevelStatus();;
 
             default:
                 return false;

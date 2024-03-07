@@ -629,7 +629,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030518, y: 406.99997}
+  m_AnchoredPosition: {x: -470, y: 406.99997}
   m_SizeDelta: {x: 635.4, y: 74.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &114634464
@@ -900,6 +900,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: bluedoor
       objectReference: {fileID: 0}
+    - target: {fileID: 7941262983504481843, guid: 63c3f5e22c60a044899676a49099b760, type: 3}
+      propertyPath: l1
+      value: 
+      objectReference: {fileID: 1084706718}
     - target: {fileID: 7941262983504481843, guid: 63c3f5e22c60a044899676a49099b760, type: 3}
       propertyPath: t1
       value: 
@@ -1733,7 +1737,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030518, y: -113.000015}
+  m_AnchoredPosition: {x: 563, y: 404}
   m_SizeDelta: {x: 635.4, y: 74.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &833502208
@@ -2077,6 +2081,10 @@ PrefabInstance:
       value: pinkdoor
       objectReference: {fileID: 0}
     - target: {fileID: 4297556987004755809, guid: 76de25e85942707449a723fad1fdb18e, type: 3}
+      propertyPath: l1
+      value: 
+      objectReference: {fileID: 1084706718}
+    - target: {fileID: 4297556987004755809, guid: 76de25e85942707449a723fad1fdb18e, type: 3}
       propertyPath: t1
       value: 
       objectReference: {fileID: 1084706717}
@@ -2126,6 +2134,7 @@ GameObject:
   - component: {fileID: 1084706714}
   - component: {fileID: 1084706716}
   - component: {fileID: 1084706717}
+  - component: {fileID: 1084706718}
   m_Layer: 0
   m_Name: Progression
   m_TagString: Untagged
@@ -2208,6 +2217,28 @@ MonoBehaviour:
   p2: {fileID: 1609445248}
   p1_done: 0
   p2_done: 0
+  levelDone: 0
+  currentLevel: 0
+--- !u!114 &1084706718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084706713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a7e4f72d5c2d984593b51521d274dbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadLevel: {fileID: 47684804}
+  buttonStatus: {fileID: 43578182}
+  text1: {fileID: 114634464}
+  text2: {fileID: 833502208}
+  p1: {fileID: 1170775959}
+  p2: {fileID: 1609445248}
+  p1_done: 0
+  p2_done: 1
   levelDone: 0
   currentLevel: 0
 --- !u!114 &1170775959 stripped

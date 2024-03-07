@@ -16,13 +16,6 @@ public class ButtonWeigh : MonoBehaviour
 
     public int inContact = 0;
 
-    private bool p1OnButton = false;
-    private bool p2OnButton = false;
-
-    
-
-
-
     // Start is called before the first frame update
     void Start()
     {
