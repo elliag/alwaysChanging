@@ -10,6 +10,7 @@ TagManager:
   - BlueTeleport
   - Merge
   - Death
+  - egg
   layers:
   - Default
   - TransparentFX
