@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pinkSpawn: {fileID: 0}
   blueSpawn: {fileID: 0}
+  p1: {fileID: 0}
+  p2: {fileID: 0}
 --- !u!61 &3230635410447410891
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -110,7 +112,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.12110305, y: 0.09688252}

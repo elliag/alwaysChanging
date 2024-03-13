@@ -10,7 +10,7 @@ public class Player1 : MonoBehaviour
     //0 = default, 1 = chicken, 2 = fly, 3 = wheel, 4 = fan, 5 = scissors
     public int currentPower = 0;
 
-    public Sprite basic, chicken;
+    public Sprite basic, chicken, fly;
 
 
     // Start is called before the first frame update
@@ -47,6 +47,11 @@ public class Player1 : MonoBehaviour
             case 1:
                 //chicken sprite
                 gameObject.GetComponent<SpriteRenderer>().sprite = chicken;
+                break;
+
+            case 2:
+                //fly sprite
+                gameObject.GetComponent<SpriteRenderer>().sprite = fly;
                 break;
 
         }

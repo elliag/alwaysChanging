@@ -9,7 +9,7 @@ public class Player1Movement : MonoBehaviour
 
     private float horizontal;
     private float speed = 8f;
-    private float jumpingPower = 16f;
+    private float jumpingPower = 11f;
     private bool isFacingRight = true;
     private bool hasJumped = false;
 
@@ -51,6 +51,12 @@ public class Player1Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && p1.getPower() == 1)
         {
             Instantiate(egg, gameObject.transform.position, Quaternion.identity, uiCanvas.transform);
+        }
+
+        //if chicken ability is equipped
+        if (Input.GetKey(KeyCode.E) && p1.getPower() == 2)
+        {
+            rb.velocity = rb.velocity.x, speed * -1f;
         }
 
         //check if power not equal 0 then drp

@@ -43,8 +43,8 @@ public class Level1_Progression : MonoBehaviour
 
             case "Level1":
                 currentLevel = true;
-                text1.text = "Get to the Teleporter!";
-                text2.text = "Get to the Teleporter!";
+                text1.text = "Activate the Teleporter!";
+                text2.text = "Activate the Teleporter!";
                 break;
 
             default:

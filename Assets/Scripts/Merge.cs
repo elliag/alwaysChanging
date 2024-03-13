@@ -31,7 +31,7 @@ public class Merge : MonoBehaviour
         setMergeStatus(true);
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "Player1" || coll.gameObject.tag == "Player2")
         {

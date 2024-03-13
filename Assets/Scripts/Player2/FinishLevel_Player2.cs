@@ -97,7 +97,7 @@ public class FinishLevel_Player2 : MonoBehaviour
                 break;
 
             case "Level1":
-                //loadLevel.LoadLevel2();
+                loadLevel.LoadLevel2();
                 break;
 
             default:
